@@ -12,7 +12,7 @@ To open your merchant account and set up an project, you can [sign up here](http
 
 #Installation
 The Paymentwall assembly provides integration access to the Paymentwall Gateway.
-To download the library in your environment, you can download the [ZIP archive](https://github.com/paymentwall/paymentwall-csharp.git), build it to get dll package and place into your project, then make reference to it. 
+To download the library in your environment, you can download the [ZIP archive](https://github.com/paymentwall/paymentwall-dotnet.git), build it to get dll package and place into your project, then make reference to it. 
 In order to make reference, right click on you project and select Add Reference..., browsing Paymentwall dll package, then press OK button.
 
 #Code Samples
