@@ -66,11 +66,12 @@ namespace Paymentwall
             this.periodType = periodType;
             this.recurring = recurring;
 
-            if (productType == Paymentwall_Product.TYPE_SUBSCRIPTION && this.recurring == true) 
-            { 
+            if (productType == Paymentwall_Product.TYPE_SUBSCRIPTION && this.recurring == true)
+            {
                 this.trialProduct = trialProduct;
-            } else 
-            { 
+            }
+            else
+            {
                 this.trialProduct = null;
             }
         }

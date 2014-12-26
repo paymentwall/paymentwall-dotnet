@@ -38,6 +38,24 @@ namespace Paymentwall
             this.extraParams = extraParams;
         }
 
+
+        /*
+         * Widget constructor for Virtual Currency API
+         * 
+         * @param string userId identifier of the end-user who is viewing the widget
+         * @param string widgetCode e.g. p1 or p1_1, can be found inside of your Paymentwall Merchant account in the Widgets section
+         * @param Dictionary<string, string> extraParams associative array of additional params that will be included into the widget URL, 
+         * e.g. 'sign_version' or 'email'. Full list of parameters for each API is available at http://paymentwall.com/documentation
+         */
+        public Paymentwall_Widget(string userId, string widgetCode, Dictionary<string, string> extraParams)
+        {
+            this.userId = userId;
+            this.widgetCode = widgetCode;
+            this.extraParams = extraParams;
+            this.products = new List<Paymentwall_Product>();
+        }
+
+
         /*
          * Get default signature version for this API Type
          * 
@@ -199,19 +217,27 @@ namespace Paymentwall
         {
             if (Paymentwall_Widget.getApiType() == Paymentwall_Widget.API_VC)
             {
-                if (!Regex.IsMatch(widget, "/^w|s|mw/"))
+                if (!Regex.IsMatch(widget, @"^w|s|mw"))
+                {
                     return Paymentwall_Widget.CONTROLLER_PAYMENT_VIRTUAL_CURRENCY;
+                }
                 else
+                {
                     return "";
+                }
             }
             else if (Paymentwall_Widget.getApiType() == Paymentwall_Widget.API_GOODS)
             {
                 if (!flexibleCall)
                 {
-                    if (!Regex.IsMatch(widget, "/^w|s|mw/"))
+                    if (!Regex.IsMatch(widget, @"^w|s|mw"))
+                    {
                         return Paymentwall_Widget.CONTROLELR_PAYMENT_DIGITAL_GOODS;
+                    }
                     else
+                    {
                         return "";
+                    }
                 }
                 else
                 {

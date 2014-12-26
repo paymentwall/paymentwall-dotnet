@@ -84,8 +84,7 @@ Paymentwall_Base.setSecretKey("YOUR_SECRET_KEY"); // available in your Paymentwa
 <pre><code>
 Paymentwall_Widget widget = new Paymentwall_Widget(
 	"user40012", // id of the end-user who's making the payment
-	"p1_1", // widget code, e.g. p1; can be picked inside of your merchant account	
-	new List<Paymentwall_Product>(),	// leave here a blank list of product for Virtual Currency API
+	"p1_1", // widget code, e.g. p1; can be picked inside of your merchant account
 	new Dictionary<string, string>() {{"email", "user@hostname.com"}} // additional parameters
 );
 Response.Write(widget.getHtmlCode());
@@ -127,10 +126,12 @@ Paymentwall_Base.setSecretKey("YOUR_SECRET_KEY"); // available in your Paymentwa
 ####Widget Call
 <pre><code>
 List<Paymentwall_Product> productList = new List<Paymentwall_Product>();
-Paymentwall_Product product1 = new Paymentwall_Product("product301", 3.33f, "EUR"); // first product in cart
-Paymentwall_Product product2 = new Paymentwall_Product("product607", 7.77f, "EUR"); // second product in cart
-productList.Add(product1);
-productList.Add(product2);
+productList.AddRange(
+	new List<Paymentwall_Product>() {
+		new Paymentwall_Product("product301", 3.33f, "EUR"), //first product on cart
+		new Paymentwall_Product("product607", 7.77f, "EUR") //second product on cart
+	}
+);
 Paymentwall_Widget widget = new Paymentwall_Widget(
 	"user40012", // id of the end-user who's making the payment
 	"p1_1", // widget code, e.g. p1; can be picked inside of your merchant account

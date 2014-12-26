@@ -65,7 +65,7 @@ namespace Paymentwall
 
             if (this.isParametersValid())
             {
-                if (this.isParametersValid() || skipIpWhiteListCheck)
+                if (this.isIpAddressValid() || skipIpWhiteListCheck)
                 {
                     if (this.isSignatureValid())
                     {
@@ -178,7 +178,7 @@ namespace Paymentwall
             }
             else
             { //API_CART
-                requiredParams.AddRange(new string[] { "uid", "goodsid", "type", "ref", "sig" });
+                requiredParams.AddRange(new string[] { "uid", "goodsid[0]", "type", "ref", "sig" });
             }
 
             foreach (string field in requiredParams)
@@ -425,7 +425,7 @@ namespace Paymentwall
 
             if (version == Paymentwall_Pingback.SIGNATURE_VERSION_2 || version == Paymentwall_Pingback.SIGNATURE_VERSION_3)
             {
-                signatureParamsToSign = signatureParamsToSign.OrderBy(d => d.Key).ToDictionary(d => d.Key, d => d.Value);
+                signatureParamsToSign = signatureParamsToSign.OrderBy(d => d.Key, StringComparer.Ordinal).ToDictionary(d => d.Key, d => d.Value);
             }
 
             foreach (KeyValuePair<string, string> kvp in signatureParamsToSign)
