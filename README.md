@@ -11,11 +11,10 @@ To use Paymentwall, all you need to do is to sign up for a Paymentwall Merchant 
 To open your merchant account and set up an project, you can [sign up here](http://paymentwall.com/signup/merchant?source=gh).
 
 #Installation
-It is recommended to use nuget for installing Paymentwall library. To install To install paymentwall, run the following command in the Package Manager Console
-<pre><code>
+It is recommended to use nuget for installing Paymentwall library. To install paymentwall, run the following command in the Package Manager Console
+```
 PM> Install-Package Paymentwall
-</pre></code>
-
+```
 
 #Code Samples
 
