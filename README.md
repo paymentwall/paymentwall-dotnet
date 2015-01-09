@@ -11,9 +11,11 @@ To use Paymentwall, all you need to do is to sign up for a Paymentwall Merchant 
 To open your merchant account and set up an project, you can [sign up here](http://paymentwall.com/signup/merchant?source=gh).
 
 #Installation
-The Paymentwall assembly provides integration access to the Paymentwall Gateway.
-To download the library in your environment, you can download the [ZIP archive](https://github.com/paymentwall/paymentwall-dotnet/archive/master.zip), build it to get dll package and place into your project, then make reference to it. 
-In order to make reference, right click on you project and select Add Reference..., browsing Paymentwall dll package, then press OK button.
+It is recommended to use nuget for installing Paymentwall library. To install To install paymentwall, run the following command in the Package Manager Console
+<pre><code>
+PM> Install-Package Paymentwall
+</pre></code>
+
 
 #Code Samples
 
