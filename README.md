@@ -21,20 +21,20 @@ PM> Install-Package Paymentwall
 ##Digital Goods API
 
 ####Initializing Paymentwall
-<pre><code>
+```
 using Paymentwall;
 
 Paymentwall_Base.setApiType(Paymentwall_Base.API_GOODS);
 Paymentwall_Base.setAppKey("YOUR_PROJECT_KEY"); // available in your Paymentwall merchant area
 Paymentwall_Base.setSecretKey("YOUR_SECRET_KEY"); // available in your Paymentwall merchant area
-</code></pre>
+```
 
 ####Widget Call
 [Web API details](http://www.paymentwall.com/en/documentation/Digital-Goods-API/710#paymentwall_widget_call_flexible_widget_call)
 
 The widget is a payment page hosted by Paymentwall that embeds the entire payment flow: selecting the payment method, completing the billing details, and providing customer support via the Help section. You can redirect the users to this page or embed it via iframe. Below is an example that renders an iframe with Paymentwall Widget.
-
-<pre><code>List<Paymentwall_Product> productList = new List<Paymentwall_Product>();
+```
+List<Paymentwall_Product> productList = new List<Paymentwall_Product>();
 Paymentwall_Product product = new Paymentwall_Product("product301", 9.99f, "USD", "Gold", Paymentwall_Product.TYPE_FIXED, 1, Paymentwall_Product.PERIOD_TYPE_YEAR, true, null);
 productList.Add(product);
 Paymentwall_Widget widget = new Paymentwall_Widget(
@@ -44,12 +44,12 @@ Paymentwall_Widget widget = new Paymentwall_Widget(
 	new Dictionary<string, string>() {{"email", "user@hostname.com"}} // additional parameters
 );
 Response.Write(widget.getHtmlCode());
-</code></pre>
+```
 
 ####Pingback Processing
 
 The Pingback is a webhook notifying about a payment being made. Pingbacks are sent via HTTP/HTTPS to your servers. To process pingbacks use the following code:
-<pre><code>
+```
 NameValueCollection parameters = Request.QueryString;
 Paymentwall_Pingback pingback = new Paymentwall_Pingback(parameters, HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"]);
 if (pingback.validate())
@@ -68,32 +68,32 @@ if (pingback.validate())
 else {                
 	Response.Write(pingback.getErrorSummary());
 }
-</code></pre>
+```
 
 ##Virtual Currency API
 
 ####Initializing Paymentwall
-<pre><code>
+```
 using Paymentwall;
 
 Paymentwall_Base.setApiType(Paymentwall_Base.API_VC);
 Paymentwall_Base.setAppKey("YOUR_PROJECT_KEY"); // available in your Paymentwall merchant area
 Paymentwall_Base.setSecretKey("YOUR_SECRET_KEY"); // available in your Paymentwall merchant area
-</code></pre>
+```
 
 ####Widget Call
-<pre><code>
+```
 Paymentwall_Widget widget = new Paymentwall_Widget(
 	"user40012", // id of the end-user who's making the payment
 	"p1_1", // widget code, e.g. p1; can be picked inside of your merchant account
 	new Dictionary<string, string>() {{"email", "user@hostname.com"}} // additional parameters
 );
 Response.Write(widget.getHtmlCode());
-</code></pre>
+```
 
 ####Pingback Processing
 
-<pre><code>
+```
 NameValueCollection parameters = Request.QueryString;
 Paymentwall_Pingback pingback = new Paymentwall_Pingback(parameters, HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"]);
 if (pingback.validate())
@@ -111,21 +111,21 @@ if (pingback.validate())
 else {
 	Response.Write(pingback.getErrorSummary());
 }
-</code></pre>
+```
 
 ##Cart API
 
 ####Initializing Paymentwall
-<pre><code>
+```
 using Paymentwall;
 
 Paymentwall_Base.setApiType(Paymentwall_Base.API_CART);
 Paymentwall_Base.setAppKey("YOUR_PROJECT_KEY"); // available in your Paymentwall merchant area
 Paymentwall_Base.setSecretKey("YOUR_SECRET_KEY"); // available in your Paymentwall merchant area
-</code></pre>
+```
 
 ####Widget Call
-<pre><code>
+```
 List<Paymentwall_Product> productList = new List<Paymentwall_Product>();
 productList.AddRange(
 	new List<Paymentwall_Product>() {
@@ -140,11 +140,11 @@ Paymentwall_Widget widget = new Paymentwall_Widget(
 	new Dictionary<string, string>() {{"email", "user@hostname.com"}} // additional parameters
 );
 Response.Write(widget.getHtmlCode());
-</code></pre>
+```
 
 ####Pingback Processing
 
-<pre><code>
+```
 NameValueCollection parameters = Request.QueryString;
 Paymentwall_Pingback pingback = new Paymentwall_Pingback(parameters, HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"]);
 if (pingback.validate())
@@ -163,4 +163,4 @@ else
 {
 	Response.Write(pingback.getErrorSummary());
 }
-</code></pre>
+```
