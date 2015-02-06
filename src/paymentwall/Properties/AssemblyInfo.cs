@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("paymentwall")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("This library allows developers to use Paymentwall APIs (Virtual Currency, Digital Goods featuring recurring billing, and Virtual Cart")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Paymentwall")]
-[assembly: AssemblyProduct("Paymentwall .NET Integration Library")]
-[assembly: AssemblyCopyright("Copyright © 2010-2014 Paymentwall, Inc.")]
+[assembly: AssemblyCompany("Paymentwall, Inc.")]
+[assembly: AssemblyProduct("Paymentwall ASP.NET Library")]
+[assembly: AssemblyCopyright("Copyright (c) 2010-2014 Paymentwall, Inc.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("1.0.0")]
+[assembly: AssemblyFileVersion("1.0.0")]
