@@ -11,7 +11,7 @@ To use Paymentwall, all you need to do is to sign up for a Paymentwall Merchant 
 To open your merchant account and set up an project, you can [sign up here](http://paymentwall.com/signup/merchant?source=gh).
 
 #Installation
-It is recommended to use nuget for installing Paymentwall library. To install paymentwall, run the following command in the Package Manager Console
+We recommend to use NuGet for installing Paymentwall library. To install Paymentwall, please run the following command in the Package Manager Console
 ```
 PM> Install-Package Paymentwall
 ```
@@ -35,7 +35,16 @@ Paymentwall_Base.setSecretKey("YOUR_SECRET_KEY"); // available in your Paymentwa
 The widget is a payment page hosted by Paymentwall that embeds the entire payment flow: selecting the payment method, completing the billing details, and providing customer support via the Help section. You can redirect the users to this page or embed it via iframe. Below is an example that renders an iframe with Paymentwall Widget.
 ```
 List<Paymentwall_Product> productList = new List<Paymentwall_Product>();
-Paymentwall_Product product = new Paymentwall_Product("product301", 9.99f, "USD", "Gold", Paymentwall_Product.TYPE_FIXED, 1, Paymentwall_Product.PERIOD_TYPE_YEAR, true, null);
+Paymentwall_Product product = new Paymentwall_Product(
+								"product301", // id of the product in your system
+								9.99f, // price
+								"USD", // currency code
+								"Gold Membership", // product name
+								Paymentwall_Product.TYPE_SUBSCRIPTION, // this is a time-based product; for one-time products, use Paymentwall_Product.TYPE_FIXED and omit the following 3 parameters
+								1, // time duration
+								Paymentwall_Product.PERIOD_TYPE_YEAR, // year
+								true // recurring
+							);
 productList.Add(product);
 Paymentwall_Widget widget = new Paymentwall_Widget(
 	"user40012", // id of the end-user who's making the payment
