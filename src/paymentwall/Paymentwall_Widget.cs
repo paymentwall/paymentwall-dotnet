@@ -274,7 +274,7 @@ namespace Paymentwall
             }
             else
             {
-                parameters = parameters.OrderBy(d => d.Key).ToDictionary(d => d.Key, d => d.Value);
+				parameters = parameters.OrderBy(d => d.Key, StringComparer.Ordinal).ToDictionary(d => d.Key, d => d.Value);
 
                 foreach (KeyValuePair<string, string> param in parameters)
                 {

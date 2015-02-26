@@ -2,17 +2,17 @@
 <package >
   <metadata>
     <id>Paymentwall</id>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <title>Paymentwall ASP.NET Library</title>
     <authors>Paymentwall, Inc.</authors>
     <owners>Paymentwall, Inc.</owners>
     <licenseUrl>https://github.com/paymentwall/paymentwall-dotnet/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/paymentwall/paymentwall-dotnet</projectUrl>
-    <iconUrl>https://www.paymentwall.com/images/buttons/logo2_middle.png</iconUrl>
+    <iconUrl>https://lh5.googleusercontent.com/-O9wydixaEms/VO7Jt7bayEI/AAAAAAAAAJI/mop6lkYIW7s/s128-no/logo.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Paymentwall is the leading digital payments platform for globally monetizing digital goods and services. Paymentwall assists game publishers, dating sites, rewards sites, SaaS companies and many other verticals to monetize their digital content and services. Merchants can plugin Paymentwall's API to accept payments from over 100 different methods including credit cards, debit cards, bank transfers, SMS/Mobile payments, prepaid cards, eWallets, landline payments and others.</description>
-    <releaseNotes>Paymentwall ASP.NET Library version 1.0.0</releaseNotes>
-    <copyright>Copyright (c) 2010-2014 Paymentwall, Inc.</copyright>
+    <releaseNotes>Paymentwall ASP.NET Library version 1.0.1</releaseNotes>
+    <copyright>Copyright (c) 2010-2015 Paymentwall, Inc.</copyright>
     <tags>Paymentwall, payment, ASP.NET, money, credit cards, subscriptions</tags>
   </metadata>
   <files>
