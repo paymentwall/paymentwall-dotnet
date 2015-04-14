@@ -8,7 +8,7 @@
     <owners>Paymentwall, Inc.</owners>
     <licenseUrl>https://github.com/paymentwall/paymentwall-dotnet/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/paymentwall/paymentwall-dotnet</projectUrl>
-    <iconUrl>https://lh5.googleusercontent.com/-O9wydixaEms/VO7Jt7bayEI/AAAAAAAAAJI/mop6lkYIW7s/s128-no/logo.png</iconUrl>
+    <iconUrl>https://api.paymentwall.com/content/design/files/developers/github/paymentwall-128x128.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Paymentwall is the leading digital payments platform for globally monetizing digital goods and services. Paymentwall assists game publishers, dating sites, rewards sites, SaaS companies and many other verticals to monetize their digital content and services. Merchants can plugin Paymentwall's API to accept payments from over 100 different methods including credit cards, debit cards, bank transfers, SMS/Mobile payments, prepaid cards, eWallets, landline payments and others.</description>
     <releaseNotes>Paymentwall ASP.NET Library version 1.0.1</releaseNotes>
