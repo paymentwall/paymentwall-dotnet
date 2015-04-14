@@ -304,17 +304,18 @@ namespace Paymentwall
             int count = 0;
             bool end = false;
 
-            foreach (string key in dict.Keys)
-            {
-                if (count == dict.Count - 1) end = true;
+			foreach(string key in dict.Keys)
+			{
+				if(count == dict.Count - 1) end = true;
 
-                if (end)
-                    queryString.AppendFormat("{0}={1}", key, dict[key]);
-                else
-                    queryString.AppendFormat("{0}={1}{2}", key, dict[key], s);
+				string escapedValue = Uri.EscapeDataString(dict[key]??string.Empty);
+				if(end)
+					queryString.AppendFormat("{0}={1}",key,escapedValue);
+				else
+					queryString.AppendFormat("{0}={1}{2}",key,escapedValue,s);
 
-                count++;
-            }
+				count++;
+			}
             return queryString.ToString();
         }
 
