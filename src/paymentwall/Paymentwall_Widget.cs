@@ -201,8 +201,10 @@ namespace Paymentwall
             {
                 attributes = defaultAttributes;
             }
-            var attributesQuery = this.buildQueryString(attributes, " ");
-            return "<iframe src='" + this.getUrl() + "' " + attributesQuery + "></iframe>";
+            var attributesList = attributes.Select(
+                    a => String.Format("{0}=\"{1}\"", a.Key, a.Value.Replace("\"", "'"))
+                ).ToArray();
+            return "<iframe src='" + this.getUrl() + "' " + String.Join(" ", attributesList) + "></iframe>";
         }
 
 
