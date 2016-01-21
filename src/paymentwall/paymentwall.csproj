@@ -40,11 +40,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiTypes.cs" />
-    <Compile Include="Paymentwall_Base.cs" />
+    <Compile Include="PaymentwallBase.cs" />
     <Compile Include="Pingbacks\ApiCartPingback.cs" />
     <Compile Include="Pingbacks\ApiGoodsPingback.cs" />
     <Compile Include="Pingbacks\PingbackBase.cs" />
-    <Compile Include="Paymentwall_Product.cs" />
+    <Compile Include="PaymentwallProduct.cs" />
     <Compile Include="Pingbacks\VirtualCurrencyPingback.cs" />
     <Compile Include="Widgets\ApiCartWidget.cs" />
     <Compile Include="Widgets\ApiGoodsWidget.cs" />

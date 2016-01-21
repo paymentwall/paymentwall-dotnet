@@ -17,7 +17,7 @@ namespace Paymentwall.Widgets
         {
             int index = 0;
 
-            foreach (Paymentwall_Product product in this.products)
+            foreach (PaymentwallProduct product in this.products)
             {
                 parameters.Add("external_ids[" + index.ToString() + "]", product.getId());
 

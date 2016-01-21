@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Paymentwall
 {
-    public class Paymentwall_Product
+    public class PaymentwallProduct
     {
 
         /**
@@ -35,13 +35,13 @@ namespace Paymentwall
         private int periodLength;
         private string periodType;
         private bool recurring;
-        private Paymentwall_Product trialProduct;
+        private PaymentwallProduct trialProduct;
 
 
         /**
          * Default constructor
          */
-        public Paymentwall_Product() { }
+        public PaymentwallProduct() { }
 
 
         /**
@@ -55,7 +55,7 @@ namespace Paymentwall
          * @param bool recurring if the product recurring
          * @param Paymentwall_Product trialProduct trial product, product type should be subscription, recurring should be True
          */
-        public Paymentwall_Product(string productId, float amount = 0.0f, string currencyCode = null, string name = null, string productType = Paymentwall_Product.TYPE_FIXED, int periodLength = 0, string periodType = null, bool recurring = false, Paymentwall_Product trialProduct = null)
+        public PaymentwallProduct(string productId, float amount = 0.0f, string currencyCode = null, string name = null, string productType = PaymentwallProduct.TYPE_FIXED, int periodLength = 0, string periodType = null, bool recurring = false, PaymentwallProduct trialProduct = null)
         {
             this.productId = productId;
             this.amount = amount;
@@ -66,7 +66,7 @@ namespace Paymentwall
             this.periodType = periodType;
             this.recurring = recurring;
 
-            if (productType == Paymentwall_Product.TYPE_SUBSCRIPTION && this.recurring == true)
+            if (productType == PaymentwallProduct.TYPE_SUBSCRIPTION && this.recurring == true)
             {
                 this.trialProduct = trialProduct;
             }
@@ -145,7 +145,7 @@ namespace Paymentwall
         /**
          * @return Paymentwall_Product trial product
          */
-        public Paymentwall_Product getTrialProduct()
+        public PaymentwallProduct getTrialProduct()
         {
             return this.trialProduct;
         }

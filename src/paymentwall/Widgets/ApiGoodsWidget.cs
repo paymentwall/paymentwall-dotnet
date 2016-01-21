@@ -18,8 +18,8 @@ namespace Paymentwall.Widgets
             {
                 if (productsNumber == 1)
                 {
-                    Paymentwall_Product product = this.products[0];
-                    Paymentwall_Product postTrialProduct = null;
+                    PaymentwallProduct product = this.products[0];
+                    PaymentwallProduct postTrialProduct = null;
                     if (product.getTrialProduct() != null)
                     {
                         postTrialProduct = product;
@@ -31,7 +31,7 @@ namespace Paymentwall.Widgets
                     parameters.Add("ag_external_id", product.getId());
                     parameters.Add("ag_type", product.getType());
 
-                    if (product.getType() == Paymentwall_Product.TYPE_SUBSCRIPTION)
+                    if (product.getType() == PaymentwallProduct.TYPE_SUBSCRIPTION)
                     {
                         parameters.Add("ag_period_length", product.getPeriodLength().ToString());
                         parameters.Add("ag_period_type", product.getPeriodType());

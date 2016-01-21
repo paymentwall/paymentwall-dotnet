@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Paymentwall
 {
-    public abstract class Paymentwall_Base
+    public abstract class PaymentwallBase
     {
         /*
          * Paymentwall library version

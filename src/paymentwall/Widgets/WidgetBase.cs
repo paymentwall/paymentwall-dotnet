@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Paymentwall.Widgets
 {
-    public abstract class WidgetBase : Paymentwall_Base
+    public abstract class WidgetBase : PaymentwallBase
     {
 
         /**
@@ -19,7 +19,7 @@ namespace Paymentwall.Widgets
 
         protected string userId;
         protected string widgetCode;
-        protected List<Paymentwall_Product> products = new List<Paymentwall_Product>();
+        protected List<PaymentwallProduct> products = new List<PaymentwallProduct>();
         protected Dictionary<string, string> extraParams = new Dictionary<string, string>();
 
 
@@ -44,7 +44,7 @@ namespace Paymentwall.Widgets
         //{ }
 
 
-        public static WidgetBase Generate(ApiTypes apiType, string userId, string widgetCode, List<Paymentwall_Product> products, Dictionary<string, string> extraParams)
+        public static WidgetBase Generate(ApiTypes apiType, string userId, string widgetCode, List<PaymentwallProduct> products, Dictionary<string, string> extraParams)
         {
             WidgetBase widget = null;
             if (apiType == ApiTypes.CART)
@@ -58,7 +58,7 @@ namespace Paymentwall.Widgets
             widget.userId = userId;
             widget.widgetCode = widgetCode;
             widget.extraParams = extraParams;
-            widget.products = products ?? new List<Paymentwall_Product>();
+            widget.products = products ?? new List<PaymentwallProduct>();
 
             return widget;
         }

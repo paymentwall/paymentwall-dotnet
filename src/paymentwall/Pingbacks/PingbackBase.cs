@@ -9,7 +9,7 @@ using Paymentwall.Pingbacks;
 
 namespace Paymentwall.Pingbacks
 {
-    public abstract class PingbackBase : Paymentwall_Base
+    public abstract class PingbackBase : PaymentwallBase
     {
         /**
          * Pingback types
@@ -305,11 +305,11 @@ namespace Paymentwall.Pingbacks
         /*
          *  @return Paymentwall_Product 
          */
-        public Paymentwall_Product getProduct()
+        public PaymentwallProduct getProduct()
         {
-            string productType = (this.getProductPeriodLength() > 0 ? Paymentwall_Product.TYPE_SUBSCRIPTION : Paymentwall_Product.TYPE_FIXED);
+            string productType = (this.getProductPeriodLength() > 0 ? PaymentwallProduct.TYPE_SUBSCRIPTION : PaymentwallProduct.TYPE_FIXED);
 
-            Paymentwall_Product product = new Paymentwall_Product(
+            PaymentwallProduct product = new PaymentwallProduct(
                     this.getProductId(),
                     0,
                     null,
@@ -326,9 +326,9 @@ namespace Paymentwall.Pingbacks
         /*
          * @return List<Paymentwall_Product>
          */
-        public List<Paymentwall_Product> getProducts()
+        public List<PaymentwallProduct> getProducts()
         {
-            List<Paymentwall_Product> products = new List<Paymentwall_Product>();
+            List<PaymentwallProduct> products = new List<PaymentwallProduct>();
             List<string> productIds = new List<string>();
 
             foreach (var productId in this.parameters["goodsid"])
@@ -340,7 +340,7 @@ namespace Paymentwall.Pingbacks
             {
                 foreach (string id in productIds)
                 {
-                    products.Add(new Paymentwall_Product(id));
+                    products.Add(new PaymentwallProduct(id));
                 }
             }
 
