@@ -42,14 +42,29 @@ namespace Paymentwall.Pingbacks
          * @param Dictionary<string, string> parameters associative array of parameters received by pingback processing script, e.g. Request.QueryString()
          * @param string ipAddress IP address from where the pingback request orginates, e.g. '127.0.0.1'
          */
-        public static PingbackBase Parse(NameValueCollection parameters, string ipAddress)
+        public static PingbackBase ParseByApiType(int apiType, NameValueCollection parameters, string ipAddress)
         {
             PingbackBase pingback = null;
-            if (ApiType == API_VC)
+            if (apiType == API_VC)
                 pingback = new VirtualCurrencyPingback();
-            else if (ApiType == API_GOODS)
+            else if (apiType == API_GOODS)
                 pingback = new ApiGoodsPingback();
-            else if (ApiType == API_CART)
+            else if (apiType == API_CART)
+                pingback = new ApiCartPingback();
+            else
+                throw new Exception("Invalid Api Type passed");
+
+            return initPingback(pingback, parameters, ipAddress);
+        }
+
+        public static PingbackBase ParseAuto(NameValueCollection parameters, string ipAddress)
+        {
+            PingbackBase pingback = null;
+            if (parameters.AllKeys.Contains("currency"))
+                pingback = new VirtualCurrencyPingback();
+            else if (parameters.AllKeys.Contains("goodsid"))
+                pingback = new ApiGoodsPingback();
+            else if (parameters.AllKeys.Contains("goodsid[0]"))
                 pingback = new ApiCartPingback();
             else
                 throw new Exception("ApiType not set");
