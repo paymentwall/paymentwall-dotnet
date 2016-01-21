@@ -7,8 +7,8 @@
     <ProjectGuid>{28161476-EE71-4072-B0BD-B8B8E9D77746}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>paymentwall</RootNamespace>
-    <AssemblyName>paymentwall</AssemblyName>
+    <RootNamespace>Paymentwall</RootNamespace>
+    <AssemblyName>Paymentwall</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
