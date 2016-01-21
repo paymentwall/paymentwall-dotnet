@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Paymentwall.Pingbacks;
 
-namespace paymentwall.Pingbacks
+namespace Paymentwall.Pingbacks
 {
     public class ApiGoodsPingback : PingbackBase
     {

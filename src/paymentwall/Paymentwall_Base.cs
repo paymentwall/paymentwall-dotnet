@@ -43,12 +43,6 @@ namespace Paymentwall
         protected List<string> errors = new List<string>();
 
         /**
-         * Paymentwall API type
-         * @param int apiType
-         */
-        public static int ApiType { get; set; }
-
-        /**
          * Paymentwall application key - can be found in your merchant area
          * @param string appKey
          */

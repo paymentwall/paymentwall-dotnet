@@ -45,7 +45,10 @@
     <Compile Include="Pingbacks\PingbackBase.cs" />
     <Compile Include="Paymentwall_Product.cs" />
     <Compile Include="Pingbacks\VirtualCurrencyPingback.cs" />
-    <Compile Include="Widgets\Paymentwall_Widget.cs" />
+    <Compile Include="Widgets\ApiCartWidget.cs" />
+    <Compile Include="Widgets\ApiGoodsWidget.cs" />
+    <Compile Include="Widgets\VirtualCurrencyWidget.cs" />
+    <Compile Include="Widgets\WidgetBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
