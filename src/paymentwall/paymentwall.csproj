@@ -40,9 +40,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Paymentwall_Base.cs" />
-    <Compile Include="Paymentwall_Pingback.cs" />
+    <Compile Include="Pingbacks\ApiCartPingback.cs" />
+    <Compile Include="Pingbacks\ApiGoodsPingback.cs" />
+    <Compile Include="Pingbacks\PingbackBase.cs" />
     <Compile Include="Paymentwall_Product.cs" />
-    <Compile Include="Paymentwall_Widget.cs" />
+    <Compile Include="Pingbacks\VirtualCurrencyPingback.cs" />
+    <Compile Include="Widgets\Paymentwall_Widget.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

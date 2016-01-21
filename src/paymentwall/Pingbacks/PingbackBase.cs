@@ -5,12 +5,12 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using paymentwall.Pingbacks;
 
-namespace Paymentwall
+namespace Paymentwall.Pingbacks
 {
-    public class Paymentwall_Pingback : Paymentwall_Base
+    public abstract class PingbackBase : Paymentwall_Base
     {
-
         /**
          * Pingback types
          */
@@ -38,18 +38,34 @@ namespace Paymentwall
          */
         protected string ipAddress;
 
-
         /**
          * @param Dictionary<string, string> parameters associative array of parameters received by pingback processing script, e.g. Request.QueryString()
          * @param string ipAddress IP address from where the pingback request orginates, e.g. '127.0.0.1'
          */
-        public Paymentwall_Pingback(NameValueCollection parameters, string ipAddress)
+        public static PingbackBase Parse(NameValueCollection parameters, string ipAddress)
+        {
+            PingbackBase pingback = null;
+            if (ApiType == API_VC)
+                pingback = new VirtualCurrencyPingback();
+            else if (ApiType == API_GOODS)
+                pingback = new ApiGoodsPingback();
+            else if (ApiType == API_CART)
+                pingback = new ApiCartPingback();
+            else
+                throw new Exception("ApiType not set");
+
+            return initPingback(pingback, parameters, ipAddress);
+        }
+
+        private static PingbackBase initPingback(PingbackBase pingback, NameValueCollection parameters, string ipAddress)
         {
             foreach (string p in parameters.AllKeys)
             {
-                this.parameters.Add(p, parameters[p]);
+                pingback.parameters.Add(p, parameters[p]);
             }
-            this.ipAddress = ipAddress;
+            pingback.ipAddress = ipAddress;
+
+            return pingback;
         }
 
 
@@ -89,10 +105,6 @@ namespace Paymentwall
             return validated;
         }
 
-
-        /**
-         * @return bool
-         */
         public bool isSignatureValid()
         {
             string signature = "";
@@ -106,22 +118,7 @@ namespace Paymentwall
                 signature = null;
             }
 
-            List<string> signatureParams = new List<string>();
-
-            if (ApiType == Paymentwall_Pingback.API_VC)
-            {
-                signatureParams.AddRange(new string[] { "uid", "currency", "type", "ref" });
-            }
-            else if (ApiType == Paymentwall_Pingback.API_GOODS)
-            {
-                signatureParams.AddRange(new string[] { "uid", "goodsid", "slength", "speriod", "type", "ref" });
-            }
-            else
-            { //API_CART
-                signatureParams.AddRange(new string[] { "uid", "goodsid", "type", "ref" });
-                this.parameters["sign_version"] = Paymentwall_Pingback.SIGNATURE_VERSION_2.ToString();
-            }
-
+            var signatureParams = getSignatureParams();
             if (!this.parameters.ContainsKey("sign_version")) //Check if signature version 1            
             {
                 foreach (string field in signatureParams)
@@ -131,7 +128,7 @@ namespace Paymentwall
                     else
                         signatureParamsToSign.Add(field, null);
                 }
-                this.parameters["sign_version"] = Paymentwall_Pingback.SIGNATURE_VERSION_1.ToString();
+                this.parameters["sign_version"] = SIGNATURE_VERSION_1.ToString();
             }
             else
             {
@@ -142,6 +139,8 @@ namespace Paymentwall
 
             return signatureCalculated == signature;
         }
+
+        protected abstract List<string> getSignatureParams();
 
 
         /**
@@ -166,20 +165,7 @@ namespace Paymentwall
         public bool isParametersValid()
         {
             int errorsNumber = 0;
-            List<string> requiredParams = new List<string>();
-
-            if (ApiType == Paymentwall_Pingback.API_VC)
-            {
-                requiredParams.AddRange(new string[] { "uid", "currency", "type", "ref", "sig" });
-            }
-            else if (ApiType == Paymentwall_Pingback.API_GOODS)
-            {
-                requiredParams.AddRange(new string[] { "uid", "goodsid", "type", "ref", "sig" });
-            }
-            else
-            { //API_CART
-                requiredParams.AddRange(new string[] { "uid", "goodsid[0]", "type", "ref", "sig" });
-            }
+            var requiredParams = getRequiredParams();
 
             foreach (string field in requiredParams)
             {
@@ -192,6 +178,8 @@ namespace Paymentwall
 
             return errorsNumber == 0;
         }
+
+        protected abstract IEnumerable<string> getRequiredParams();
 
 
         /**
@@ -231,9 +219,9 @@ namespace Paymentwall
         public string getTypeVerbal()
         {
             Dictionary<string, string> pingbackTypes = new Dictionary<string, string>();
-            pingbackTypes.Add(Paymentwall_Pingback.PINGBACK_TYPE_SUBSCRIPTION_CANCELLATION.ToString(), "user_subscription_cancellation");
-            pingbackTypes.Add(Paymentwall_Pingback.PINGBACK_TYPE_SUBSCRIPTION_EXPIRED.ToString(), "user_subscription_expired");
-            pingbackTypes.Add(Paymentwall_Pingback.PINGBACK_TYPE_SUBSCRIPTION_PAYMENT_FAILED.ToString(), "user_subscription_payment_failed");
+            pingbackTypes.Add(PINGBACK_TYPE_SUBSCRIPTION_CANCELLATION.ToString(), "user_subscription_cancellation");
+            pingbackTypes.Add(PINGBACK_TYPE_SUBSCRIPTION_EXPIRED.ToString(), "user_subscription_expired");
+            pingbackTypes.Add(PINGBACK_TYPE_SUBSCRIPTION_PAYMENT_FAILED.ToString(), "user_subscription_payment_failed");
 
             if (!String.IsNullOrWhiteSpace(this.parameters["type"]))
             {
@@ -378,9 +366,9 @@ namespace Paymentwall
         public bool isDeliverable()
         {
             return (
-              this.getPingbackType() == Paymentwall_Pingback.PINGBACK_TYPE_REGULAR ||
-              this.getPingbackType() == Paymentwall_Pingback.PINGBACK_TYPE_GOODWILL ||
-              this.getPingbackType() == Paymentwall_Pingback.PINGBACK_TYPE_RISK_REVIEWED_ACCEPTED
+              this.getPingbackType() == PINGBACK_TYPE_REGULAR ||
+              this.getPingbackType() == PINGBACK_TYPE_GOODWILL ||
+              this.getPingbackType() == PINGBACK_TYPE_RISK_REVIEWED_ACCEPTED
             );
         }
 
@@ -393,8 +381,8 @@ namespace Paymentwall
         public bool isCancelable()
         {
             return (
-                this.getPingbackType() == Paymentwall_Pingback.PINGBACK_TYPE_NEGATIVE ||
-                this.getPingbackType() == Paymentwall_Pingback.PINGBACK_TYPE_RISK_REVIEWED_DECLINED
+                this.getPingbackType() == PINGBACK_TYPE_NEGATIVE ||
+                this.getPingbackType() == PINGBACK_TYPE_RISK_REVIEWED_DECLINED
             );
         }
 
@@ -406,7 +394,7 @@ namespace Paymentwall
          */
         public bool isUnderReview()
         {
-            return this.getPingbackType() == Paymentwall_Pingback.PINGBACK_TYPE_RISK_UNDER_REVIEW;
+            return this.getPingbackType() == PINGBACK_TYPE_RISK_UNDER_REVIEW;
         }
 
 
@@ -423,7 +411,7 @@ namespace Paymentwall
             string baseString = "";
             signatureParamsToSign.Remove("sig");
 
-            if (version == Paymentwall_Pingback.SIGNATURE_VERSION_2 || version == Paymentwall_Pingback.SIGNATURE_VERSION_3)
+            if (version == SIGNATURE_VERSION_2 || version == SIGNATURE_VERSION_3)
             {
                 signatureParamsToSign = signatureParamsToSign.OrderBy(d => d.Key, StringComparer.Ordinal).ToDictionary(d => d.Key, d => d.Value);
             }
@@ -434,13 +422,13 @@ namespace Paymentwall
             }
             baseString += secret;
 
-            if (version == Paymentwall_Pingback.SIGNATURE_VERSION_3)
+            if (version == SIGNATURE_VERSION_3)
             {
-                return Paymentwall_Pingback.getHash(baseString, "sha256");
+                return getHash(baseString, "sha256");
             }
             else
             {
-                return Paymentwall_Pingback.getHash(baseString, "md5");
+                return getHash(baseString, "md5");
             }
         }
 
