@@ -44,14 +44,14 @@ namespace Paymentwall.Widgets
         //{ }
 
 
-        public static WidgetBase Generate(int apiType, string userId, string widgetCode, List<Paymentwall_Product> products, Dictionary<string, string> extraParams)
+        public static WidgetBase Generate(ApiTypes apiType, string userId, string widgetCode, List<Paymentwall_Product> products, Dictionary<string, string> extraParams)
         {
             WidgetBase widget = null;
-            if (apiType == API_CART)
+            if (apiType == ApiTypes.CART)
                 widget = new ApiCartWidget();
-            else if (apiType == API_GOODS)
+            else if (apiType == ApiTypes.GOODS)
                 widget = new ApiGoodsWidget();
-            else if (apiType == API_VC)
+            else if (apiType == ApiTypes.VC)
                 widget = new ApiCartWidget();
             else throw new Exception("Invalid Api Type specified");
 

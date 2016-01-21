@@ -19,13 +19,6 @@ namespace Paymentwall
         protected const string SUBS_URL = "https://api.paymentwall.com/api/pro/v1/subscription";
 
         /*
-         * API types
-         */
-        public const int API_VC = 1;
-        public const int API_GOODS = 2;
-        public const int API_CART = 3;
-
-        /*
          * Controllers for APIs
          */
         protected const string CONTROLLER_PAYMENT_VIRTUAL_CURRENCY = "ps";

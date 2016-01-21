@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiTypes.cs" />
     <Compile Include="Paymentwall_Base.cs" />
     <Compile Include="Pingbacks\ApiCartPingback.cs" />
     <Compile Include="Pingbacks\ApiGoodsPingback.cs" />
