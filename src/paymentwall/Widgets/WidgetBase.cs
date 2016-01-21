@@ -22,28 +22,16 @@ namespace Paymentwall.Widgets
         protected List<PaymentwallProduct> products = new List<PaymentwallProduct>();
         protected Dictionary<string, string> extraParams = new Dictionary<string, string>();
 
+        protected abstract void generateUrlParameters(ref Dictionary<string, string> parameters);
+        protected abstract string buildController(string widget, bool flexibleCall = false);
 
-        ///*
+        //*
         // * @param string userId identifier of the end-user who is viewing the widget
         // * @param string widgetCode e.g. p1 or p1_1, can be found inside of your Paymentwall Merchant account in the Widgets section
         // * @param List<Paymentwall_Product> products array that consists of Paymentwall_Product entities; for Flexible Widget Call use array of 1 product
         // * @param Dictionary<string, string> extraParams associative array of additional params that will be included into the widget URL, 
         // * e.g. 'sign_version' or 'email'. Full list of parameters for each API is available at http://paymentwall.com/documentation
         // */
-        //public WidgetBase(string userId, string widgetCode, List<Paymentwall_Product> products, Dictionary<string, string> extraParams)
-        //{
-        //    this.userId = userId;
-        //    this.widgetCode = widgetCode;
-        //    this.extraParams = extraParams;
-
-        //    this.products = products ?? new List<Paymentwall_Product>();
-        //}
-
-        //public WidgetBase(string userId, string widgetCode, Dictionary<string, string> extraParams) :
-        //    this(userId, widgetCode, null, extraParams)
-        //{ }
-
-
         public static WidgetBase Generate(ApiTypes apiType, string userId, string widgetCode, List<PaymentwallProduct> products, Dictionary<string, string> extraParams)
         {
             WidgetBase widget = null;
@@ -104,9 +92,6 @@ namespace Paymentwall.Widgets
             return WidgetBase.BASE_URL + "/" + this.buildController(this.widgetCode) + "?" + this.buildQueryString(parameters, "&");
         }
 
-        protected abstract void generateUrlParameters(ref Dictionary<string, string> parameters);
-
-
         /**
 	     * Return HTML code for the widget
 	     *
@@ -134,14 +119,7 @@ namespace Paymentwall.Widgets
         }
 
 
-        /**
-         * Build controller URL depending on API type
-         *
-         * @param string widget code of the widget
-         * @param bool flexibleCall
-         * @return string
-         */
-        protected abstract string buildController(string widget, bool flexibleCall = false);
+        
 
 
         /**

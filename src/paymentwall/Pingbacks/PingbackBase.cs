@@ -27,6 +27,9 @@ namespace Paymentwall.Pingbacks
         const int PINGBACK_TYPE_SUBSCRIPTION_PAYMENT_FAILED = 14;
 
 
+        protected abstract List<string> getSignatureParams();
+        protected abstract IEnumerable<string> getRequiredParams();
+
         /**
          * Pingback parameters
          */
@@ -154,8 +157,6 @@ namespace Paymentwall.Pingbacks
             return signatureCalculated == signature;
         }
 
-        protected abstract List<string> getSignatureParams();
-
 
         /**
          * @return bool
@@ -193,7 +194,7 @@ namespace Paymentwall.Pingbacks
             return errorsNumber == 0;
         }
 
-        protected abstract IEnumerable<string> getRequiredParams();
+        
 
 
         /**
