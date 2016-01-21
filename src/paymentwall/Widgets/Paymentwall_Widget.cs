@@ -34,26 +34,14 @@ namespace Paymentwall
         {
             this.userId = userId;
             this.widgetCode = widgetCode;
-            this.products = products;
             this.extraParams = extraParams;
+
+            this.products = products ?? new List<Paymentwall_Product>();
         }
 
-
-        /*
-         * Widget constructor for Virtual Currency API
-         * 
-         * @param string userId identifier of the end-user who is viewing the widget
-         * @param string widgetCode e.g. p1 or p1_1, can be found inside of your Paymentwall Merchant account in the Widgets section
-         * @param Dictionary<string, string> extraParams associative array of additional params that will be included into the widget URL, 
-         * e.g. 'sign_version' or 'email'. Full list of parameters for each API is available at http://paymentwall.com/documentation
-         */
-        public Paymentwall_Widget(string userId, string widgetCode, Dictionary<string, string> extraParams)
-        {
-            this.userId = userId;
-            this.widgetCode = widgetCode;
-            this.extraParams = extraParams;
-            this.products = new List<Paymentwall_Product>();
-        }
+        public Paymentwall_Widget(string userId, string widgetCode, Dictionary<string, string> extraParams) :
+            this(userId, widgetCode, null, extraParams)
+        { }
 
 
         /*
@@ -276,7 +264,7 @@ namespace Paymentwall
             }
             else
             {
-				parameters = parameters.OrderBy(d => d.Key, StringComparer.Ordinal).ToDictionary(d => d.Key, d => d.Value);
+                parameters = parameters.OrderBy(d => d.Key, StringComparer.Ordinal).ToDictionary(d => d.Key, d => d.Value);
 
                 foreach (KeyValuePair<string, string> param in parameters)
                 {
@@ -306,18 +294,18 @@ namespace Paymentwall
             int count = 0;
             bool end = false;
 
-			foreach(string key in dict.Keys)
-			{
-				if(count == dict.Count - 1) end = true;
+            foreach (string key in dict.Keys)
+            {
+                if (count == dict.Count - 1) end = true;
 
-				string escapedValue = Uri.EscapeDataString(dict[key]??string.Empty);
-				if(end)
-					queryString.AppendFormat("{0}={1}",key,escapedValue);
-				else
-					queryString.AppendFormat("{0}={1}{2}",key,escapedValue,s);
+                string escapedValue = Uri.EscapeDataString(dict[key] ?? string.Empty);
+                if (end)
+                    queryString.AppendFormat("{0}={1}", key, escapedValue);
+                else
+                    queryString.AppendFormat("{0}={1}{2}", key, escapedValue, s);
 
-				count++;
-			}
+                count++;
+            }
             return queryString.ToString();
         }
 
