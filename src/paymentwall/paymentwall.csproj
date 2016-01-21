@@ -41,6 +41,11 @@
   <ItemGroup>
     <Compile Include="ApiTypes.cs" />
     <Compile Include="PaymentwallBase.cs" />
+    <Compile Include="PaymentwallSettings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>PaymentwallSettings.settings</DependentUpon>
+    </Compile>
     <Compile Include="Pingbacks\ApiCartPingback.cs" />
     <Compile Include="Pingbacks\ApiGoodsPingback.cs" />
     <Compile Include="Pingbacks\PingbackBase.cs" />
@@ -51,6 +56,13 @@
     <Compile Include="Widgets\VirtualCurrencyWidget.cs" />
     <Compile Include="Widgets\WidgetBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="PaymentwallSettings.settings">
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
+      <LastGenOutput>PaymentwallSettings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

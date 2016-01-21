@@ -7,6 +7,13 @@ namespace Paymentwall
 {
     public abstract class PaymentwallBase
     {
+        protected PaymentwallBase()
+        {
+            AppKey = PaymentWallSettings.Default.AppKey;
+            SecretKey = PaymentWallSettings.Default.SecretKey;
+            ProApiKey = PaymentWallSettings.Default.ProApiKey;
+        }
+
         /*
          * Paymentwall library version
          */
@@ -39,19 +46,19 @@ namespace Paymentwall
          * Paymentwall application key - can be found in your merchant area
          * @param string appKey
          */
-        public static string AppKey { get; set; }
+        public string AppKey { get; set; }
 
         /**
          * Paymentwall secret key - can be found in your merchant area
          * @param string secretKey
          */
-        public static string SecretKey { get; set; }
+        public string SecretKey { get; set; }
 
         /**
          * Paymentwall Pro API Key
          * @param string proApiKey
          */
-        public static string ProApiKey { get; set; }
+        public string ProApiKey { get; set; }
 
         /*
          * Fill the array with the errors found at execution
