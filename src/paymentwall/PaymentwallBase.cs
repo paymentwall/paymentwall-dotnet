@@ -9,9 +9,9 @@ namespace Paymentwall
     {
         protected PaymentwallBase()
         {
-            AppKey = PaymentWallSettings.Default.AppKey;
-            SecretKey = PaymentWallSettings.Default.SecretKey;
-            ProApiKey = PaymentWallSettings.Default.ProApiKey;
+            AppKey = PaymentwallSettings.Default.AppKey;
+            SecretKey = PaymentwallSettings.Default.SecretKey;
+            ProApiKey = PaymentwallSettings.Default.ProApiKey;
         }
 
         /*
