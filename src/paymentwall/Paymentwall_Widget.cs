@@ -63,7 +63,7 @@ namespace Paymentwall
          */
         public int getDefaultSignatureVersion()
         {
-            if (Paymentwall_Widget.getApiType() != Paymentwall_Widget.API_CART)
+            if (ApiType != Paymentwall_Widget.API_CART)
             {
                 return Paymentwall_Widget.DEFAULT_SIGNATURE_VERSION;
             }
@@ -82,13 +82,13 @@ namespace Paymentwall
         public string getUrl()
         {
             Dictionary<string, string> parameters = new Dictionary<string, string>();
-            parameters["key"] = Paymentwall_Widget.getAppKey();
+            parameters["key"] = AppKey;
             parameters["uid"] = this.userId;
             parameters["widget"] = this.widgetCode;
 
             int productsNumber = this.products.Count;
 
-            if (Paymentwall_Widget.getApiType() == Paymentwall_Widget.API_GOODS)
+            if (ApiType == Paymentwall_Widget.API_GOODS)
             {
                 if (productsNumber > 0)
                 {
@@ -141,7 +141,7 @@ namespace Paymentwall
                 } //end if (productNumber > 0) 
 
             }
-            else if (Paymentwall_Widget.getApiType() == Paymentwall_Widget.API_CART)
+            else if (ApiType == Paymentwall_Widget.API_CART)
             {
                 int index = 0;
 
@@ -175,7 +175,7 @@ namespace Paymentwall
             }
             parameters = mergeDictionaries(parameters, extraParams);
 
-            parameters["sign"] = Paymentwall_Widget.calculateSignature(parameters, Paymentwall_Widget.getSecretKey(), signatureVersion);
+            parameters["sign"] = Paymentwall_Widget.calculateSignature(parameters, SecretKey, signatureVersion);
 
             return Paymentwall_Widget.BASE_URL + "/" + this.buildController(this.widgetCode) + "?" + this.buildQueryString(parameters, "&");
         }
@@ -217,7 +217,7 @@ namespace Paymentwall
          */
         protected string buildController(string widget, bool flexibleCall = false)
         {
-            if (Paymentwall_Widget.getApiType() == Paymentwall_Widget.API_VC)
+            if (ApiType == Paymentwall_Widget.API_VC)
             {
                 if (!Regex.IsMatch(widget, @"^w|s|mw"))
                 {
@@ -228,7 +228,7 @@ namespace Paymentwall
                     return "";
                 }
             }
-            else if (Paymentwall_Widget.getApiType() == Paymentwall_Widget.API_GOODS)
+            else if (ApiType == Paymentwall_Widget.API_GOODS)
             {
                 if (!flexibleCall)
                 {

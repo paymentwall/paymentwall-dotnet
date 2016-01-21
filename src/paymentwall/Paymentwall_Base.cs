@@ -7,7 +7,6 @@ namespace Paymentwall
 {
     public abstract class Paymentwall_Base
     {
-
         /*
          * Paymentwall library version
          */
@@ -47,77 +46,25 @@ namespace Paymentwall
          * Paymentwall API type
          * @param int apiType
          */
-        public static int apiType;
+        public static int ApiType { get; set; }
 
         /**
          * Paymentwall application key - can be found in your merchant area
          * @param string appKey
          */
-        public static string appKey;
+        public static string AppKey { get; set; }
 
         /**
          * Paymentwall secret key - can be found in your merchant area
          * @param string secretKey
          */
-        public static string secretKey;
+        public static string SecretKey { get; set; }
 
         /**
          * Paymentwall Pro API Key
          * @param string proApiKey
          */
-        public static string proApiKey;
-
-        /*
-         * @param int apiType API type
-         */
-        public static void setApiType(int apiType)
-        {
-            Paymentwall_Base.apiType = apiType;
-        }
-
-        public static int getApiType()
-        {
-            return Paymentwall_Base.apiType;
-        }
-
-        /*
-         * @param string appKey application key of your application, can be found inside of your Paymentwall Merchant Account
-         */
-        public static void setAppKey(string appKey)
-        {
-            Paymentwall_Base.appKey = appKey;
-        }
-
-        public static string getAppKey()
-        {
-            return Paymentwall_Base.appKey;
-        }
-
-        /*
-         *  @param string secretKey secret key of your application, can be found inside of your Paymentwall Merchant Account
-         */
-        public static void setSecretKey(string secretKey)
-        {
-            Paymentwall_Base.secretKey = secretKey;
-        }
-
-        public static string getSecretKey()
-        {
-            return Paymentwall_Base.secretKey;
-        }
-
-        /*
-         * @param string proApiKey API key used for Pro authentication
-         */
-        public static void setProApiKey(string proApiKey)
-        {
-            Paymentwall_Base.proApiKey = proApiKey;
-        }
-
-        public static string getProApiKey()
-        {
-            return Paymentwall_Base.proApiKey;
-        }
+        public static string ProApiKey { get; set; }
 
         /*
          * Fill the array with the errors found at execution

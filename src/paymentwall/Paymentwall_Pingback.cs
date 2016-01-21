@@ -108,11 +108,11 @@ namespace Paymentwall
 
             List<string> signatureParams = new List<string>();
 
-            if (Paymentwall_Pingback.getApiType() == Paymentwall_Pingback.API_VC)
+            if (ApiType == Paymentwall_Pingback.API_VC)
             {
                 signatureParams.AddRange(new string[] { "uid", "currency", "type", "ref" });
             }
-            else if (Paymentwall_Pingback.getApiType() == Paymentwall_Pingback.API_GOODS)
+            else if (ApiType == Paymentwall_Pingback.API_GOODS)
             {
                 signatureParams.AddRange(new string[] { "uid", "goodsid", "slength", "speriod", "type", "ref" });
             }
@@ -138,7 +138,7 @@ namespace Paymentwall
                 signatureParamsToSign = this.parameters;
             }
 
-            string signatureCalculated = this.calculateSignature(signatureParamsToSign, Paymentwall_Pingback.getSecretKey(), Convert.ToInt32(this.parameters["sign_version"]));
+            string signatureCalculated = this.calculateSignature(signatureParamsToSign, SecretKey, Convert.ToInt32(this.parameters["sign_version"]));
 
             return signatureCalculated == signature;
         }
@@ -168,11 +168,11 @@ namespace Paymentwall
             int errorsNumber = 0;
             List<string> requiredParams = new List<string>();
 
-            if (Paymentwall_Pingback.getApiType() == Paymentwall_Pingback.API_VC)
+            if (ApiType == Paymentwall_Pingback.API_VC)
             {
                 requiredParams.AddRange(new string[] { "uid", "currency", "type", "ref", "sig" });
             }
-            else if (Paymentwall_Pingback.getApiType() == Paymentwall_Pingback.API_GOODS)
+            else if (ApiType == Paymentwall_Pingback.API_GOODS)
             {
                 requiredParams.AddRange(new string[] { "uid", "goodsid", "type", "ref", "sig" });
             }
