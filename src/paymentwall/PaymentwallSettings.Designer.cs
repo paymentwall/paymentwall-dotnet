@@ -58,5 +58,23 @@ namespace Paymentwall {
                 return ((string)(this["ProApiKey"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Proj2AppKey {
+            get {
+                return ((string)(this["Proj2AppKey"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Proj2SecretKey {
+            get {
+                return ((string)(this["Proj2SecretKey"]));
+            }
+        }
     }
 }
