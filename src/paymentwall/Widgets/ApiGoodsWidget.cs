@@ -71,7 +71,7 @@ namespace Paymentwall.Widgets
             {
                 if (!Regex.IsMatch(widget, @"^w|s|mw"))
                 {
-                    return WidgetBase.CONTROLELR_PAYMENT_DIGITAL_GOODS;
+                    return WidgetBase.CONTROLLER_PAYMENT_DIGITAL_GOODS;
                 }
                 else
                 {
@@ -80,7 +80,7 @@ namespace Paymentwall.Widgets
             }
             else
             {
-                return WidgetBase.CONTROLELR_PAYMENT_DIGITAL_GOODS;
+                return WidgetBase.CONTROLLER_PAYMENT_DIGITAL_GOODS;
             }
         }
     }

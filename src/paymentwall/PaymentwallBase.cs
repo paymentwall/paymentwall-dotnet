@@ -29,7 +29,7 @@ namespace Paymentwall
          * Controllers for APIs
          */
         protected const string CONTROLLER_PAYMENT_VIRTUAL_CURRENCY = "ps";
-        protected const string CONTROLELR_PAYMENT_DIGITAL_GOODS = "subscription";
+        protected const string CONTROLLER_PAYMENT_DIGITAL_GOODS = "subscription";
         protected const string CONTROLLER_PAYMENT_CART = "cart";
 
         /**
