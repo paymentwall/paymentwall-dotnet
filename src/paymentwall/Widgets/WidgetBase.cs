@@ -40,7 +40,7 @@ namespace Paymentwall.Widgets
             else if (apiType == ApiTypes.GOODS)
                 widget = new ApiGoodsWidget();
             else if (apiType == ApiTypes.VC)
-                widget = new ApiCartWidget();
+                widget = new VirtualCurrencyWidget();
             else throw new Exception("Invalid Api Type specified");
 
             widget.userId = userId;
