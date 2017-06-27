@@ -48,7 +48,7 @@ Paymentwall_Product product = new Paymentwall_Product(
 productList.Add(product);
 Paymentwall_Widget widget = new Paymentwall_Widget(
 	"user40012", // id of the end-user who's making the payment
-	"p1_1", // widget code, e.g. p1; can be picked inside of your merchant account
+	"pw", // widget code, e.g. pw; can be picked inside of your merchant account
 	productList,
 	new Dictionary<string, string>() {{"email", "user@hostname.com"}} // additional parameters
 );
