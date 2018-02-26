@@ -101,7 +101,7 @@ namespace Paymentwall
                             postTrialProduct = product;
                             product = product.getTrialProduct();
                         }
-                        parameters.Add("amount", product.getAmount().ToString());
+                        parameters.Add("amount", product.getAmount());
                         parameters.Add("currencyCode", product.getCurrencyCode());
                         parameters.Add("ag_name", product.getName());
                         parameters.Add("ag_external_id", product.getId());
