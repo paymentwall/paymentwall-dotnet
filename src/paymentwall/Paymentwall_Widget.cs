@@ -159,6 +159,11 @@ namespace Paymentwall
                         parameters.Add("currencies[" + index.ToString() + "]", product.getCurrencyCode());
                     }
 
+                    if (product.getName() != null)
+                    {
+                        parameters.Add("names[" + index.ToString() + "]", product.getName());
+                    }
+
                     index++;
                 }
 
