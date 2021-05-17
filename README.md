@@ -31,7 +31,7 @@ Paymentwall_Base.setSecretKey("YOUR_SECRET_KEY"); // available in your Paymentwa
 ```
 
 #### Widget Call
-[Web API details](https://docs.paymentwall.com/integration/checkout-home)
+[Checkout API details](https://docs.paymentwall.com/integration/checkout-home)
 
 The widget is a payment page hosted by Paymentwall that embeds the entire payment flow: selecting the payment method, completing the billing details, and providing customer support via the Help section. You can redirect the users to this page or embed it via iframe. Below is an example that renders an iframe with Paymentwall Widget.
 ```
@@ -147,7 +147,7 @@ Paymentwall_Widget widget = new Paymentwall_Widget(
 	"user40012", // id of the end-user who's making the payment
 	"p1_1", // widget code, e.g. p1; can be picked inside of your merchant account
 	productList,
-	new Dictionary<string, string>() {{"email", "user@hostname.com"}, {"flexible_cart_api", "1"}} // additional parameters, use flexible_cart_api param to apply name passed via widget
+	new Dictionary<string, string>() {{"email", "user@hostname.com"}} // additional parameters
 );
 Response.Write(widget.getHtmlCode());
 ```
