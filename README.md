@@ -1,14 +1,15 @@
 # About Paymentwall
-[Paymentwall](http://paymentwall.com/?source=gh) is the leading digital payments platform for globally monetizing digital goods and services. Paymentwall assists game publishers, dating sites, rewards sites, SaaS companies and many other verticals to monetize their digital content and services. 
-Merchants can plugin Paymentwall's API to accept payments from over 100 different methods including credit cards, debit cards, bank transfers, SMS/Mobile payments, prepaid cards, eWallets, landline payments and others. 
+[Paymentwall](https://www.paymentwall.com/?source=gh) is the leading global payments platform.
 
-In order to sign up for a Paymentwall Merchant Account, [click here](http://paymentwall.com/signup/merchant?source=gh).
+Merchants can plugin Paymentwall's API to accept payments from over 150 different methods including credit cards, debit cards, bank transfers, SMS/Mobile payments, prepaid cards, eWallets, landline payments and others. 
+
+To sign up for a Paymentwall Merchant Account, [click here](https://www.paymentwall.com/signup/merchant?source=gh).
 
 # Paymentwall C# Library
-This library allows developers to use [Paymentwall APIs](http://paymentwall.com/en/documentation/API-Documentation/722?source=gh) (Virtual Currency, Digital Goods featuring recurring billing, and Virtual Cart).
+This library allows developers to use [Paymentwall APIs](https://docs.paymentwall.com/?source=gh) (Digital Goods API, Cart API, Brick API, Virtual Currency API).
 
 To use Paymentwall, all you need to do is to sign up for a Paymentwall Merchant Account so you can setup a project designed for your site.
-To open your merchant account and set up an project, you can [sign up here](http://paymentwall.com/signup/merchant?source=gh).
+To open your merchant account and set up an project, you can [sign up here](https://www.paymentwall.com/signup/merchant?source=gh).
 
 # Installation
 We recommend to use NuGet for installing Paymentwall library. To install Paymentwall, please run the following command in the Package Manager Console
@@ -30,7 +31,7 @@ Paymentwall_Base.setSecretKey("YOUR_SECRET_KEY"); // available in your Paymentwa
 ```
 
 #### Widget Call
-[Web API details](http://www.paymentwall.com/en/documentation/Digital-Goods-API/710#paymentwall_widget_call_flexible_widget_call)
+[Web API details](https://docs.paymentwall.com/integration/checkout-home)
 
 The widget is a payment page hosted by Paymentwall that embeds the entire payment flow: selecting the payment method, completing the billing details, and providing customer support via the Help section. You can redirect the users to this page or embed it via iframe. Below is an example that renders an iframe with Paymentwall Widget.
 ```
@@ -138,15 +139,15 @@ Paymentwall_Base.setSecretKey("YOUR_SECRET_KEY"); // available in your Paymentwa
 List<Paymentwall_Product> productList = new List<Paymentwall_Product>();
 productList.AddRange(
 	new List<Paymentwall_Product>() {
-		new Paymentwall_Product("product301", 3.33f, "EUR"), //first product on cart
-		new Paymentwall_Product("product607", 7.77f, "EUR") //second product on cart
+		new Paymentwall_Product("product301", 3.33f, "EUR", "Product name 1"), //first product on cart
+		new Paymentwall_Product("product607", 7.77f, "EUR", "Product name 2") //second product on cart
 	}
 );
 Paymentwall_Widget widget = new Paymentwall_Widget(
 	"user40012", // id of the end-user who's making the payment
 	"p1_1", // widget code, e.g. p1; can be picked inside of your merchant account
 	productList,
-	new Dictionary<string, string>() {{"email", "user@hostname.com"}} // additional parameters
+	new Dictionary<string, string>() {{"email", "user@hostname.com"}, {"flexible_cart_api", "1"}} // additional parameters, use flexible_cart_api param to apply name passed via widget
 );
 Response.Write(widget.getHtmlCode());
 ```
