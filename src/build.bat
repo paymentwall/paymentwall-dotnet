@@ -19,4 +19,4 @@ mkdir Build
 mkdir Build\lib
 mkdir Build\lib\net40
  
-%nuget% pack "src\paymentwall.nuspec" -NoPackageAnalysis -verbosity detailed -o Build -Version %version% -p Configuration="%config%"
+%nuget% pack "src\paymentwall.nuspec" -NoPackageAnalysis -verbosity detailed -OutputDirectory Build -Version %version% -p Configuration="%config%"
